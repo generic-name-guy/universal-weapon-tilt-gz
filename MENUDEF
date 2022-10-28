@@ -1,0 +1,28 @@
+OptionMenu "WeaponTiltOptions" 
+{
+	Title "$UWT_TITL"
+   
+    StaticText ""
+
+	Slider "$UWT_VELOCITY", "wt_rollvelocity", 0.50, 2.0, 0.01, 2
+
+	Slider "$UWT_RESISTANCE", "wt_rollresistance", 0.10, 0.25, 0.01, 2
+    
+    StaticText ""
+
+    Option "$UWT_OFFSET", "wt_offset", "OnOff"
+    
+    Option "$UWT_DEBUG", "wt_debug", "OnOff"
+}
+
+AddOptionMenu "OptionsMenu"
+{
+	Submenu "$UWT_TITL", "WeaponTiltOptions"
+	StaticText ""
+}
+
+AddOptionMenu "OptionsMenuSimple"
+{
+	Submenu "$UWT_TITL", "FlashlightPlusOptions"
+    StaticText ""
+}

@@ -1,0 +1,15 @@
+[enu default]
+UWT_TITL = "Universal Weapon Tilting";
+
+UWT_VELOCITY = "Velocity";
+UWT_RESISTANCE = "Resistance";
+
+UWT_DEBUG = "Debug (WARNING: Console Spam)";
+UWT_OFFSET = "Offset Sprite (WARNING: Broken)";
+
+[pt]
+UWT_VELOCITY = "Velocidade";
+UWT_RESISTANCE = "Resistência";
+
+UWT_DEBUG = "Debug (AVISO: Spam do Console)";
+UWT_OFFSET = "Deslocar Sprite (AVISO: Quebrado)";
