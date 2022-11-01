@@ -1,10 +1,16 @@
+/*
+Part of Universal Weapon Tilter by generic name guy.
+You can download a copy of the source code or contribute to the project on GitHub at https://github.com/generic-name-guy/universal-weapon-tilt-gz/
+This is code licensed under Unlicense, so do whatever you want with it, i don't care.
+*/
+
 class WeaponTilterInventory : Inventory
 {
-	double currentRoll, aVelocity; 
-	float rResistance, rVelocity;
+	double currentRoll, aVelocity, playerVel; 
+	float rResistance, rVelocity, rLimit;
 	vector2 direction, velocityUnit;
   int currentTickCount;
-  bool debug, offset;
+  bool debug, limit;
   
   default
   {
@@ -13,9 +19,9 @@ class WeaponTilterInventory : Inventory
   
   override void DoEffect()
   {
-    currentTickCount++; //count tick
+    super.DoEffect(); //not sure what this does
     
-    super.DoEffect();
+    currentTickCount++; //count tick
     
     // do nothing if the owner is null or not a player:
     if(!owner || !owner.player)
@@ -24,29 +30,38 @@ class WeaponTilterInventory : Inventory
     let weaponsprite = owner.player.FindPSprite(PSP_WEAPON);
     if(weaponsprite)
     {
+      //to do: optimize further with the gearbox cvar system
+      
       //get cvars, optimized with tick count
       if (currentTickCount % 35 == 0)
       {
         rResistance = cvar.getcvar("wt_rollresistance", owner.player).getfloat();
         rVelocity = cvar.getcvar("wt_rollvelocity", owner.player).getfloat();
+        rLimit = cvar.getcvar("wt_rollcap", owner.player).getfloat();
+        
         debug = cvar.getcvar("wt_debug", owner.player).getbool();
-        offset = cvar.getcvar("wt_offset", owner.player).getbool();
+        limit = cvar.getcvar("wt_cap", owner.player).getbool();
       }
   		
   		//calculate tilt and shit idk
-  		aVelocity = atan2(owner.vel.y, owner.player.vel.x);
+  		aVelocity = atan2(owner.vel.y, owner.vel.x);
   		direction = (sin(-owner.angle), cos(-owner.angle));
   		velocityUnit = owner.vel.xy;
   		currentRoll += (velocityUnit dot direction) * rVelocity;
   		currentRoll *= rResistance;
-  
+      
+      //roll cap
+      if(limit)
+      {
+        if(currentRoll > rLimit)
+        {
+          currentRoll = rLimit;
+        }
+      }
+      
+      //to do: figure out how to make this additive to avoid issues with mods that use sprite rotation for animations
       //apply tilt
       weaponsprite.rotation = currentRoll;
-      
-      if(offset)
-      {
-        weaponsprite.y += (+currentRoll);
-      }
       
       //debug
 		  if(debug)
