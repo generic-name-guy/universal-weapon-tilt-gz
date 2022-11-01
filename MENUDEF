@@ -12,7 +12,7 @@ OptionMenu "WeaponTiltOptions"
 
     Option "$UWT_CAP", "wt_cap", "OnOff"
 
-    Slider "$UWT_CAPAMOUNT", "wt_rollcap", 1, 5, 1, 0
+    Slider "$UWT_CAPAMOUNT", "wt_rollcap", 1, 5, 0.5, 2
 
     StaticText ""
     
