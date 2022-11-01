@@ -4,8 +4,7 @@ Universal Weapon Tilt is an addon for GZDoom that tilts the weapon sprite when t
 
 # To-Do
 
--Fix offset option so sprite borders aren't visible when the image is rotated
+-Add offset option so sprite borders aren't visible when the image is rotated
 
--Fix flashing issues with Project Brutality
+-Implement Gearbox CVar system for better optimization 
 
--Add a tilt cap
