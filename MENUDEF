@@ -10,7 +10,11 @@ OptionMenu "WeaponTiltOptions"
     
     StaticText ""
 
-    Option "$UWT_OFFSET", "wt_offset", "OnOff"
+    Option "$UWT_CAP", "wt_cap", "OnOff"
+
+    Slider "$UWT_CAPAMOUNT", "wt_rollcap", 1, 5, 1, 0
+
+    StaticText ""
     
     Option "$UWT_DEBUG", "wt_debug", "OnOff"
 }
