@@ -5,11 +5,13 @@ UWT_VELOCITY = "Velocity";
 UWT_RESISTANCE = "Resistance";
 
 UWT_DEBUG = "Debug (WARNING: Console Spam)";
-UWT_OFFSET = "Offset Sprite (WARNING: Broken)";
+UWT_CAP = "Cap Roll";
+UWT_CAPAMOUNT = "Cap Amount";
 
 [pt]
 UWT_VELOCITY = "Velocidade";
 UWT_RESISTANCE = "Resistência";
 
 UWT_DEBUG = "Debug (AVISO: Spam do Console)";
-UWT_OFFSET = "Deslocar Sprite (AVISO: Quebrado)";
+UWT_CAP = "Limitar Rolagem";
+UWT_CAPAMOUNT = "Quantidade do Limite";
