@@ -1,5 +1,6 @@
 user float wt_rollresistance = 0.21;
 user float wt_rollvelocity = 1.1;
+user float wt_rollcap = 3.0;
 
-user bool wt_offset = false;
+user bool wt_cap = true;
 user bool wt_debug = false;
