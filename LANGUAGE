@@ -8,6 +8,8 @@ UWT_DEBUG = "Debug (WARNING: Console Spam)";
 UWT_CAP = "Cap Roll";
 UWT_CAPAMOUNT = "Cap Amount";
 
+UWT_OFFSET = "Offset Sprite when Strafing";
+
 [pt]
 UWT_VELOCITY = "Velocidade";
 UWT_RESISTANCE = "Resistência";
@@ -15,3 +17,5 @@ UWT_RESISTANCE = "Resistência";
 UWT_DEBUG = "Debug (AVISO: Spam do Console)";
 UWT_CAP = "Limitar Rolagem";
 UWT_CAPAMOUNT = "Quantidade do Limite";
+
+UWT_OFFSET = "Deslocar Sprite";

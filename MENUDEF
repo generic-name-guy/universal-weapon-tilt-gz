@@ -17,6 +17,7 @@ OptionMenu "WeaponTiltOptions"
     StaticText ""
     
     Option "$UWT_DEBUG", "wt_debug", "OnOff"
+    Option "$UWT_OFFSET", "wt_offset", "YesNo"
 }
 
 AddOptionMenu "OptionsMenu"
