@@ -6,11 +6,11 @@ This is code licensed under Unlicense, so do whatever you want with it, i don't 
 
 class WeaponTilterInventory : Inventory
 {
-	double currentRoll, aVelocity, playerVel; 
+	double currentRoll, crABS, aVelocity, playerVel, adjustedCrABS;
 	float rResistance, rVelocity, rLimit;
 	vector2 direction, velocityUnit;
   int currentTickCount;
-  bool debug, limit;
+  bool debug, limit, offset;
   
   default
   {
@@ -26,8 +26,12 @@ class WeaponTilterInventory : Inventory
     // do nothing if the owner is null or not a player:
     if(!owner || !owner.player)
       return;
-  
+      
     let weaponsprite = owner.player.FindPSprite(PSP_WEAPON);
+    
+    if(!(owner.player.weaponstate & wf_weaponbobbing))
+      return;
+
     if(weaponsprite)
     {
       //to do: optimize further with the gearbox cvar system
@@ -41,6 +45,7 @@ class WeaponTilterInventory : Inventory
         
         debug = cvar.getcvar("wt_debug", owner.player).getbool();
         limit = cvar.getcvar("wt_cap", owner.player).getbool();
+        offset = cvar.getcvar("wt_offset", owner.player).getbool();
       }
   		
   		//calculate tilt and shit idk
@@ -49,7 +54,14 @@ class WeaponTilterInventory : Inventory
   		velocityUnit = owner.vel.xy;
   		currentRoll += (velocityUnit dot direction) * rVelocity;
   		currentRoll *= rResistance;
-      
+  		crABS = abs(currentRoll);
+  		
+      if(offset)
+      {
+        adjustedCrABS = weaponsprite.y + crABS;
+        weaponsprite.y = adjustedCrABS;
+      }
+  		
       //roll cap
       if(limit)
       {
