@@ -4,3 +4,4 @@ user float wt_rollcap = 3.0;
 
 user bool wt_cap = true;
 user bool wt_debug = false;
+user bool wt_offset = true;
